@@ -1,0 +1,123 @@
+//Colors:
+$pink: #f06292;
+$grey: #424242;
+$light: #fafafa;
+$dark: #616161;
+
+$theme: $light;
+
+//Sizes
+$wrapper-size: 1500px;
+$wrapper-width: 100%;
+$wrapper-height: 100vh;
+$square-size: 300px;
+$diagonal-size: $square-size * 2;
+$border-size: 5px; 
+$separate-length: 220px;
+
+//Animation
+$duration: 3000ms;
+
+body {
+  background-color: $theme;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $wrapper-width;
+  height: $wrapper-height;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $theme;
+}
+.diagonal {
+  width: $diagonal-size;
+  border-bottom: $border-size $pink solid;
+  position: relative;
+}
+.second .diagonal {
+  top: 50%;
+  left: 50%;
+  animation: sd $duration ease 0s 1 normal forwards;
+}
+.first {
+  z-index: 2;
+  border: $border-size #424242 solid;
+  background-color: $theme;
+  animation: fs $duration ease 0s 1 normal forwards;
+}
+.second {
+  z-index: 1;
+  border: $border-size $pink solid;
+  animation: ss $duration ease 0s 1 normal forwards;
+}
+.square {
+  overflow: hidden;
+  width: $square-size;
+  height: $square-size;
+  position: absolute;
+}
+
+@keyframes fs {
+  0% {
+    transform: rotate(0deg);
+    background-color: $theme;
+  }
+  15% {
+    transform: rotate(45deg);
+    background-color: $theme;
+  }
+  30% {
+    transform: translateX(-$separate-length) rotate(45deg);
+    background-color: $theme;
+  }
+  45% {
+    transform: translateX(-$separate-length) rotate(0deg);
+    background-color: transparent;
+  }
+  60%, 100% {
+    transform: translateX(0);
+    background-color: transparent;
+  }
+}
+
+@keyframes ss {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(45deg);
+  }
+  30% {
+    transform: translateX($separate-length) rotate(45deg);
+  }
+  45% {
+    transform: translateX($separate-length) rotate(90deg);
+  }
+  60%, 100%{
+    transform: translateX(0) rotate(90deg);
+  }
+}
+
+@keyframes sd {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+    top: 50%;
+  }
+  15%, 60% {
+    transform: translate(-50%, -50%) rotate(45deg);
+    top: 50%;
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(90deg);
+    top: 50%;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(90deg);
+    top: -50%;
+  }
+}
+
